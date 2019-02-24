@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+  >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/imageid"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bbitmap"
+     />
+
+    <ImageView
+        android:id="@+id/most_shop"
+        android:layout_width="24dp"
+        android:layout_height="12dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@+id/image"
+        android:background="@drawable/common_btn_more_yellow_n_hdpi"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="38dp"
+      />
+    <TextView
+        android:id="@+id/hot"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/image"
+       android:gravity="center"
+         android:layout_centerHorizontal="true"
+        android:text="1231231231"
+        android:textColor="#f84"
+        android:layout_marginTop="30dp"
+        />
+</RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/hotRv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+
+</LinearLayout>
