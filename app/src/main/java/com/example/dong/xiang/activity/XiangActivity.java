@@ -33,8 +33,8 @@ public  class XiangActivity extends AppCompatActivity implements QingAdapter.Tia
     private RecyclerView qingrv;
     private XiangBean.ResultBean result;
     private QingAdapter qingAdapter;
-    private String commodityId="26";
     private String count="3";
+    private String commodityId1;
 
 
     @Override
@@ -56,6 +56,10 @@ public  class XiangActivity extends AppCompatActivity implements QingAdapter.Tia
     @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public  void shopwewe(XiangBean xiangBean){
         result = xiangBean.result;
+        commodityId1 = result.commodityId;
+
+
+
     }
   //加入购物车
     @Override
@@ -65,7 +69,7 @@ public  class XiangActivity extends AppCompatActivity implements QingAdapter.Tia
         //[{"commodityId":26,"count":3}]
 
       String  reQuesetBody="[{" +
-                "commodityId:"+ commodityId +
+                "commodityId:"+ commodityId1 +
                 ",count:"+ count+"}]";
       params.put("data",reQuesetBody);
 
