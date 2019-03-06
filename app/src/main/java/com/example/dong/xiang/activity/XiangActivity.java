@@ -1,10 +1,12 @@
 package com.example.dong.xiang.activity;
 
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.TextView;
@@ -18,7 +20,10 @@ import com.example.dong.xiang.bean.ChaBean;
 import com.example.dong.xiang.bean.JiaGouBean;
 import com.example.dong.xiang.bean.LableBean;
 import com.example.dong.xiang.bean.ShopBean;
+import com.example.dong.xiang.bean.ShouhuoBean;
 import com.example.dong.xiang.bean.XiangBean;
+import com.example.dong.xiang.bean.XiuBean;
+import com.example.dong.xiang.bean.zhengBean;
 import com.example.dong.xiang.contract.Contract;
 import com.example.dong.xiang.presenter.Presenter;
 
@@ -41,6 +46,11 @@ public  class XiangActivity extends AppCompatActivity implements QingAdapter.Tia
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xiang);
+        View decorView = getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(option);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         EventBus.getDefault().register(this);
         initView();
     }
@@ -96,6 +106,17 @@ public  class XiangActivity extends AppCompatActivity implements QingAdapter.Tia
     public void LavleSuccess(LableBean lableBean) {
 
     }
+
+    @Override
+    public void ZhengSuccess(zhengBean bean) {
+
+    }
+
+    @Override
+    public void XiuSuccess(XiuBean bean) {
+
+    }
+
 
     @Override
     public void ChaGouSUccess(ChaBean chaBean) {

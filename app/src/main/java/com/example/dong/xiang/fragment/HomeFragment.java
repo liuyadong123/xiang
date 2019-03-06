@@ -36,8 +36,11 @@ import com.example.dong.xiang.bean.JiaGouBean;
 import com.example.dong.xiang.bean.LableBean;
 import com.example.dong.xiang.bean.ProductBean;
 import com.example.dong.xiang.bean.ShopBean;
+import com.example.dong.xiang.bean.ShouhuoBean;
 import com.example.dong.xiang.bean.ShouyeBean;
 import com.example.dong.xiang.bean.XiangBean;
+import com.example.dong.xiang.bean.XiuBean;
+import com.example.dong.xiang.bean.zhengBean;
 import com.example.dong.xiang.contract.Contract;
 import com.example.dong.xiang.contract.ProductContract;
 import com.example.dong.xiang.presenter.Presenter;
@@ -64,7 +67,7 @@ import butterknife.Unbinder;
 
 public class HomeFragment  extends BaseFragment<ProductContract.IProductModle,
         ProductContract.ProductPreseter>
-        implements ProductContract.IProductView ,Contract.IView,ShopAdapter.OnitemCallback,ProductAdapter.ProductCallBack {
+        implements ProductContract.IProductView ,Contract.IView,ShopAdapter.OnitemCallback,ProductAdapter.ProductCallBack,XRecyclerView.LoadingListener {
 
     private ProductAdapter productAdapter;
     private RecyclerView rv, rvs,dierge,disange;
@@ -129,27 +132,13 @@ public class HomeFragment  extends BaseFragment<ProductContract.IProductModle,
         productAdapter.setProductCallBack(this);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         rvsss = view.findViewById(R.id.rvss);
-        shopAdapter = new ShopAdapter(getActivity());
-        rvsss.setAdapter(shopAdapter);
-        shopAdapter.setCallback(this);
-        rvsss.setPullRefreshEnabled(true);
-        rvsss.setLoadingMoreEnabled(true);
-        //上下拉加载
-        rvsss.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-
-                page = 1;
-                initDatas();
-            }
-
-            @Override
-            public void onLoadMore() {
-                page++;
-                initDatas();
-            }
-        });
         rvsss.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        rvsss.setLoadingListener(this);
+        rvsss.setLoadingMoreEnabled(true);
+
+
+
+
         //返回键
         ivs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,19 +264,29 @@ public class HomeFragment  extends BaseFragment<ProductContract.IProductModle,
             if (result.size() != 0) {
                 if (page==1) {
                     rvsss.refreshComplete();
-                    shopAdapter.setList(shopBean.result);
+                    shopAdapter = new ShopAdapter(getActivity());
+                    rvsss.setAdapter(shopAdapter);
+                    shopAdapter.setCallback(this);
+                    shopAdapter.setList(result);
+
                 } else {
+                    if (shopAdapter==null){
+                        shopAdapter = new ShopAdapter(getActivity());
+                        rvsss.setAdapter(shopAdapter);
+                        shopAdapter.setList(result);
+                        shopAdapter.setCallback(this);
+                    }else {
+                        shopAdapter.addall(shopBean.result);
+                    }
                     rvsss.loadMoreComplete();
-                    shopAdapter.addList(shopBean.result);
                 }
 
 
-
             } else {
-                linersss.setVisibility(View.GONE);
+               /* linersss.setVisibility(View.GONE);
                 shibai.setVisibility(View.VISIBLE);
                 linerse.setVisibility(View.GONE);
-                lable.setVisibility(View.GONE);
+                lable.setVisibility(View.GONE);*/
             }
 
 
@@ -319,6 +318,18 @@ public class HomeFragment  extends BaseFragment<ProductContract.IProductModle,
             }
         });
     }
+
+    @Override
+    public void ZhengSuccess(zhengBean bean) {
+
+    }
+
+    @Override
+    public void XiuSuccess(XiuBean bean) {
+
+    }
+
+
 
     @Override
     public void ChaGouSUccess(ChaBean chaBean) {
@@ -361,4 +372,15 @@ public class HomeFragment  extends BaseFragment<ProductContract.IProductModle,
     }
 
 
+    @Override
+    public void onRefresh() {
+        page=1;
+        initDatas();
+    }
+
+    @Override
+    public void onLoadMore() {
+        page++;
+        initDatas();
+    }
 }

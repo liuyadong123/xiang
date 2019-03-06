@@ -1,4 +1,4 @@
-package com.example.dong.xiang.Utils;
+package com.example.dong.xiang.utils;
 
 public interface RetrofitCallback {
     void OnSuccess(String result);

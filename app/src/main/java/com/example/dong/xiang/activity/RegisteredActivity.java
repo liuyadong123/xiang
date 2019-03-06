@@ -1,8 +1,10 @@
 package com.example.dong.xiang.activity;
 
 import android.preference.RingtonePreference;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +33,11 @@ public class RegisteredActivity extends UserActivity<RegisterContract.IRegisterM
     @Override
     protected void initView() {
         ButterKnife.bind(this);
+        View decorView = getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(option);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
 
     }
     @OnClick(R.id.tv_deng)

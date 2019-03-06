@@ -30,12 +30,13 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopVH> {
         this.list=list;
         notifyDataSetChanged();
     }
-    public  void  addList(List<ShopBean.shopData> list){
+    public  void  addall(List<ShopBean.shopData> list){
         if (list!=null) {
-            list.addAll(list);
+           this.list.addAll(list);
+            notifyDataSetChanged();
         }
 
-        notifyDataSetChanged();
+
  }
     @NonNull
     @Override

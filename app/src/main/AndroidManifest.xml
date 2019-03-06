@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.dong.xiang">
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -12,7 +17,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
@@ -53,7 +59,18 @@
         <activity
             android:name=".activity.DibuActivity"
             android:label="@string/title_activity_dibu" />
-        <activity android:name=".activity.XiangActivity"></activity>
+        <activity android:name=".activity.XiangActivity" />
+        <activity android:name=".activity.DatumActivity" />
+        <activity android:name=".activity.CircleActivity" />
+        <activity android:name=".activity.TrackActivity" />
+        <activity android:name=".activity.WalletActivity" />
+        <activity android:name=".activity.SiteActivity" />
+        <activity android:name=".activity.NewSite2Activity" />
+        <activity android:name=".activity.XiuActivity" />
+        <activity android:name=".activity.XiuGaiActivity" />
+        <activity android:name=".activity.JieSuanActivity" />
+        <activity android:name=".activity.ZhiFuActivity" />
+        <activity android:name=".activity.FaBU2Activity"></activity>
     </application>
 
 </manifest>

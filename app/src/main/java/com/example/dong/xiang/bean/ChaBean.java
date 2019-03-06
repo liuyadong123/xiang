@@ -13,7 +13,7 @@ public class ChaBean {
           public String pic;
           public String count;
           public String commodityId;
-          public  int Chanum;
+          public  int Chanum=1;
           public boolean checkedbox;
     }
 }

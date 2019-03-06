@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".activity.ZhiFuActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择支付方式"
+        android:textSize="30dp"
+        android:layout_marginTop="100dp"
+        />
+       <android.support.v7.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           app:cardCornerRadius="10dp"
+           app:cardUseCompatPadding="true"
+           >
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:orientation="vertical"
+               android:layout_height="wrap_content">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <ImageView
+                       android:id="@+id/money"
+                       android:layout_width="60dp"
+                       android:layout_height="60dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/commonmoney"
+                       />
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="余额支付"
+                       android:textSize="20dp"
+                       android:layout_toRightOf="@+id/money"
+                       android:layout_centerVertical="true"
+                       android:paddingLeft="20dp"
+                       />
+                   
+                   <CheckBox
+                       android:id="@+id/moneyck"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentRight="true"
+                       android:layout_centerVertical="true"
+                       android:layout_marginRight="30dp"
+                       />
+
+               </RelativeLayout>
+           </LinearLayout>
+
+       </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/zhufu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="200dp"
+            android:text="余额支付"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:background="#f01"
+            android:textColor="#fff"
+
+            />
+
+
+</LinearLayout>

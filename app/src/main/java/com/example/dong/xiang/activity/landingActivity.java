@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -23,7 +24,10 @@ import com.example.dong.xiang.bean.JiaGouBean;
 import com.example.dong.xiang.bean.LableBean;
 import com.example.dong.xiang.bean.LadingBean;
 import com.example.dong.xiang.bean.ShopBean;
+import com.example.dong.xiang.bean.ShouhuoBean;
 import com.example.dong.xiang.bean.XiangBean;
+import com.example.dong.xiang.bean.XiuBean;
+import com.example.dong.xiang.bean.zhengBean;
 import com.example.dong.xiang.contract.Contract;
 import com.example.dong.xiang.contract.LadingContract;
 import com.example.dong.xiang.presenter.LadingPresenter;
@@ -36,6 +40,8 @@ import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareConfig;
 import com.umeng.socialize.bean.SHARE_MEDIA;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.List;
@@ -72,6 +78,7 @@ public  class landingActivity extends UserActivity<LadingContract.ILadingModle,L
     @Override
     protected void initData() {
         super.initData();
+
 
     }
     @OnClick(R.id.tv_deng)
@@ -140,6 +147,7 @@ public  class landingActivity extends UserActivity<LadingContract.ILadingModle,L
             Presenter present=new Presenter(this);
             present.huo(userId,sessionId);
             startActivity(new Intent(landingActivity.this,DibuActivity.class));
+
         }
     }
 
@@ -154,7 +162,11 @@ public  class landingActivity extends UserActivity<LadingContract.ILadingModle,L
     @Override
     protected void initView() {
         ButterKnife.bind(this);
-
+        View decorView = getWindow().getDecorView();
+        int option = View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(option);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -177,6 +189,8 @@ public  class landingActivity extends UserActivity<LadingContract.ILadingModle,L
             jz.setChecked(true);
 
         }
+
+
 
 
     }
@@ -238,6 +252,19 @@ public  class landingActivity extends UserActivity<LadingContract.ILadingModle,L
     public void LavleSuccess(LableBean lableBean) {
 
     }
+
+    @Override
+    public void ZhengSuccess(zhengBean bean) {
+
+    }
+
+    @Override
+    public void XiuSuccess(XiuBean bean) {
+
+    }
+
+
+
 
     @Override
     public void ChaGouSUccess(ChaBean chaBean) {

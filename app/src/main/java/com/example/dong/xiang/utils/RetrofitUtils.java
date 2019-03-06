@@ -1,4 +1,4 @@
-package com.example.dong.xiang.Utils;
+package com.example.dong.xiang.utils;
 
 
 import android.content.Context;
@@ -19,7 +19,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.QueryMap;
 
 public class RetrofitUtils {
     private static  RetrofitUtils retrofitUtils;
@@ -102,6 +101,36 @@ public class RetrofitUtils {
                         }
                }
            });
+
+    }
+    public  void  Delete(String url, HashMap<String,String> params, final RetrofitCallback callback){
+        RetrofiltView retrofiltView =retrofit.create(RetrofiltView.class);
+        retrofiltView.Dodelete(url,params).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    if (response.code()==200){
+                        String string = response.body().string();
+                        if (callback!=null){
+                            callback.OnSuccess(string);
+                        }
+
+                    }
+
+
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                if (callback!=null){
+                    callback.OnFailure("请求失败");
+                }
+            }
+        });
 
     }
     public  void Gets(String url, final RetrofitCallback callback){

@@ -1,12 +1,15 @@
 package com.example.dong.xiang.presenter;
 
 
-import com.example.dong.xiang.Utils.RequestCallback;
+import com.example.dong.xiang.bean.XiuBean;
+import com.example.dong.xiang.bean.XiugaiBean;
+import com.example.dong.xiang.utils.RequestCallback;
 import com.example.dong.xiang.bean.ChaBean;
 import com.example.dong.xiang.bean.JiaGouBean;
 import com.example.dong.xiang.bean.LableBean;
 import com.example.dong.xiang.bean.ShopBean;
 import com.example.dong.xiang.bean.XiangBean;
+import com.example.dong.xiang.bean.zhengBean;
 import com.example.dong.xiang.contract.Contract;
 import com.example.dong.xiang.modle.Model;
 import com.google.gson.Gson;
@@ -111,4 +114,38 @@ public class Presenter extends Contract.ShopPresenter {
             }
         });
     }
+
+    @Override
+    public void Zheng(HashMap<String, String> params) {
+        model.ZhengModle(params, new RequestCallback() {
+            @Override
+            public void ReSuccess(String result) {
+                zhengBean bean =new Gson().fromJson(result,zhengBean.class);
+                view.ZhengSuccess(bean);
+            }
+
+            @Override
+            public void ReFailure(String msg) {
+                  view.Failure(msg);
+            }
+        });
+    }
+
+    @Override
+    public void xiu(HashMap<String, String> params) {
+        model.XiuModle(params, new RequestCallback() {
+            @Override
+            public void ReSuccess(String result) {
+                XiuBean bean =new Gson().fromJson(result,XiuBean.class);
+                view.XiuSuccess(bean);
+            }
+
+            @Override
+            public void ReFailure(String msg) {
+                view.Failure(msg);
+            }
+        });
+    }
+
+
 }

@@ -1,49 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <ImageView
-        android:id="@+id/shop_class"
-        android:layout_width="wrap_content"
-        android:layout_height="31dp"
-        android:layout_margin="16dp"
-        android:src="@drawable/common_nav_btn_menu"
-        app:layout_constraintBottom_toBottomOf="@id/et_seleceshop"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/et_seleceshop"
-        app:layout_constraintTop_toTopOf="@id/et_seleceshop" />
-
-    <EditText
-        android:id="@+id/et_seleceshop"
-        android:layout_width="0dp"
-        android:background="@drawable/et_shape_bg"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入您想要输搜索的商品"
-        android:textColor="#bbb"
-        android:textSize="14sp"
-        android:paddingLeft="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toRightOf="@id/shop_class"
-        app:layout_constraintRight_toLeftOf="@id/select"
-        />
+        app:cardMaxElevation="10dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/dingdan"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@mipmap/commonding"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="全部订单"
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/fukuang"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@mipmap/commonfu"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="代付款"
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
 
-    <ImageView
-        android:id="@+id/select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/common_nav_btn_search_n_hdpi"
-        android:padding="16dp"
-        android:textSize="16sp"
-        app:layout_constraintTop_toTopOf="@id/et_seleceshop"
-        app:layout_constraintBottom_toBottomOf="@id/et_seleceshop"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/et_seleceshop"/>
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/shouhuo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@mipmap/commonshou"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="待收货"
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/pingjia"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@mipmap/commomping"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="待评价"
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:id="@+id/wancheng"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@mipmap/commonwan"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="已完成"
+                    android:textSize="15dp"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+       <android.support.v7.widget.RecyclerView
+           android:id="@+id/dingrv"
+           android:visibility="visible"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+       </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/furv"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/shourv"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pingjiarv"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
 
 
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

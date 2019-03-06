@@ -26,15 +26,15 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context context;
     private ShouyeBean.ResultBean list;
     private List<String> list1;
-    private List<ShouyeBean.ResultBean.RxxpBean> listHot;
-    private List<ShouyeBean.ResultBean.MlssBean> listStyle;
-    private List<ShouyeBean.ResultBean.PzshBean> listLive;
+    private ShouyeBean.ResultBean.RxxpBean listHot;
+    private ShouyeBean.ResultBean.MlssBean listStyle;
+    private ShouyeBean.ResultBean.PzshBean listLive;
 
     public ProductAdapter(Context context) {
         this.context = context;
     }
 
-    public void setList(ShouyeBean.ResultBean list, List<ShouyeBean.ResultBean.RxxpBean> listHot, List<ShouyeBean.ResultBean.MlssBean> listStyle, List<ShouyeBean.ResultBean.PzshBean> listLive) {
+    public void setList(ShouyeBean.ResultBean list, ShouyeBean.ResultBean.RxxpBean listHot, ShouyeBean.ResultBean.MlssBean listStyle, ShouyeBean.ResultBean.PzshBean listLive) {
         this.list = list;
         this.listHot = listHot;
         this.listStyle = listStyle;
@@ -78,18 +78,17 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int i) {
          if (getItemViewType(i)==0){
-
              ((oneVH)holder).fly.setImagesUrl(list1);
          }else if (getItemViewType(i)==1){
-             ((ViewHolder_hot)holder).hot.setText(listHot.get(0).getName());
-             List<ShouyeBean.ResultBean.RxxpBean.CommodityListBean> commodityList = listHot.get(0).getCommodityList();
+             ((ViewHolder_hot)holder).hot.setText(listHot.getName());
+             List<ShouyeBean.ResultBean.RxxpBean.CommodityListBean> commodityList = listHot.getCommodityList();
              HotAdapter hotAdapter =new HotAdapter(commodityList,context);
              ((ViewHolder_hot)holder).rvhot.setAdapter(hotAdapter);
              ((ViewHolder_hot)holder).rvhot.setLayoutManager(new GridLayoutManager(context,3));
              ((ViewHolder_hot)holder).imageid.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-                     productCallBack.onclickCallback(listHot.get(0).getId());
+                     productCallBack.onclickCallback(listHot.getId());
                  }
              });
              hotAdapter.setProductCallBack(new StytleAdapter.ProductCallBacks() {
@@ -100,15 +99,15 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
              });
          }
          else if (getItemViewType(i)==2) {
-             ((ViewHolder_style) holder).mo.setText(listStyle.get(0).getName());
-             final List<ShouyeBean.ResultBean.MlssBean.CommodityListBeanXX> commodityList = listStyle.get(0).getCommodityList();
+             ((ViewHolder_style) holder).mo.setText(listStyle.getName());
+             final List<ShouyeBean.ResultBean.MlssBean.CommodityListBeanXX> commodityList = listStyle.getCommodityList();
              StytleAdapter stytleAdapter =new StytleAdapter(commodityList,context);
              ((ViewHolder_style) holder).styrv.setAdapter(stytleAdapter);
              ((ViewHolder_style) holder).styrv.setLayoutManager(new LinearLayoutManager(context));
             ((ViewHolder_style)holder).image.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-                     productCallBack.onclickCallback(listStyle.get(0).getId());
+                     productCallBack.onclickCallback(listStyle.getId());
                  }
              });
               stytleAdapter.setProductCallBack(new StytleAdapter.ProductCallBacks() {
@@ -121,15 +120,15 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
          }
          else{
-             ((ViewHolder_live)holder).ping.setText(listLive.get(0).getName());
-             final List<ShouyeBean.ResultBean.PzshBean.CommodityListBeanX> commodityList = listLive.get(0).getCommodityList();
+             ((ViewHolder_live)holder).ping.setText(listLive.getName());
+             final List<ShouyeBean.ResultBean.PzshBean.CommodityListBeanX> commodityList = listLive.getCommodityList();
              LeaveAdapter leaveAdapter =new LeaveAdapter(commodityList,context);
              ((ViewHolder_live)holder).liveRv.setAdapter(leaveAdapter);
              ((ViewHolder_live)holder).liveRv.setLayoutManager(new GridLayoutManager(context,2));
           ((ViewHolder_live)holder).image.setOnClickListener(new View.OnClickListener() {
                  @Override
                  public void onClick(View v) {
-                     productCallBack.onclickCallback(listLive.get(0).getId());
+                     productCallBack.onclickCallback(listLive.getId());
                  }
              });
           leaveAdapter.setProductCallBack(new StytleAdapter.ProductCallBacks() {
@@ -150,9 +149,9 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public int getItemViewType(int position) {
       if (position==0){
           return  0;
-      } else if (position==1&&1002==listHot.get(position-1).getId()) {
+      } else if (position==1&&1002==listHot.getId()) {
           return 1;
-      }else if (position==2&&1003==listStyle.get(position-2).getId()){
+      }else if (position==2&&1003==listStyle.getId()){
           return 2;
       }else {
           return 3;

@@ -1,4 +1,4 @@
-package com.example.dong.xiang.Utils;
+package com.example.dong.xiang.utils;
 
 public interface RequestCallback {
     void ReSuccess(String result);

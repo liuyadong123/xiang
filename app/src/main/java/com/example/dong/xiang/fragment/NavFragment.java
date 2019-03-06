@@ -1,5 +1,6 @@
 package com.example.dong.xiang.fragment;
 
+import android.content.Intent;
 import android.media.DrmInitData;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,16 +17,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dong.xiang.R;
+import com.example.dong.xiang.activity.JieSuanActivity;
 import com.example.dong.xiang.adapter.ChaAdapter;
 import com.example.dong.xiang.bean.ChaBean;
 import com.example.dong.xiang.bean.JiaGouBean;
 import com.example.dong.xiang.bean.LableBean;
 import com.example.dong.xiang.bean.ShopBean;
+import com.example.dong.xiang.bean.ShouhuoBean;
 import com.example.dong.xiang.bean.XiangBean;
+import com.example.dong.xiang.bean.XiuBean;
+import com.example.dong.xiang.bean.zhengBean;
 import com.example.dong.xiang.contract.Contract;
 import com.example.dong.xiang.net.HejiCallback;
 import com.example.dong.xiang.presenter.Presenter;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +69,12 @@ public class NavFragment extends Fragment implements Contract.IView,HejiCallback
         gouquan=view.findViewById(R.id.gouquan);
         gouheji=view.findViewById(R.id.gouheji);
         goujiesuan=view.findViewById(R.id.gouqujiesuan);
+        goujiesuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),JieSuanActivity.class));
+            }
+        });
 
 
         gouquan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -130,6 +143,15 @@ public class NavFragment extends Fragment implements Contract.IView,HejiCallback
 
     }
 
+    @Override
+    public void ZhengSuccess(zhengBean bean) {
+
+    }
+
+    @Override
+    public void XiuSuccess(XiuBean bean) {
+
+    }
 
 
     @Override

@@ -1,8 +1,8 @@
 package com.example.dong.xiang.modle;
 
-import com.example.dong.xiang.Utils.RequestCallback;
-import com.example.dong.xiang.Utils.RetrofitCallback;
-import com.example.dong.xiang.Utils.RetrofitUtils;
+import com.example.dong.xiang.utils.RequestCallback;
+import com.example.dong.xiang.utils.RetrofitCallback;
+import com.example.dong.xiang.utils.RetrofitUtils;
 import com.example.dong.xiang.api.Api;
 import com.example.dong.xiang.contract.Contract;
 
@@ -15,9 +15,6 @@ public class Model implements Contract.IModle {
         String keyword = params.get("keyword");
         String page = params.get("page");
         String count = params.get("count");
-
-
-
 
         RetrofitUtils.getIntenter().Gets(Api.Shop_User + "?keyword=" + keyword + "&page=" + page + "&count=" + count, new RetrofitCallback() {
             @Override
@@ -102,6 +99,36 @@ public class Model implements Contract.IModle {
                 callback.ReFailure(msg);
              }
          });
+    }
+
+    @Override
+    public void ZhengModle(HashMap<String, String> params, final RequestCallback callback) {
+        RetrofitUtils.getIntenter().Posts(Api.Zheng_user, params, new RetrofitCallback() {
+            @Override
+            public void OnSuccess(String result) {
+                callback.ReSuccess(result);
+            }
+
+            @Override
+            public void OnFailure(String msg) {
+                  callback.ReFailure(msg);
+            }
+        });
+    }
+
+    @Override
+    public void XiuModle(HashMap<String, String> params, final RequestCallback callback) {
+        RetrofitUtils.getIntenter().NiceName(Api.Xiu_user, params, new RetrofitCallback() {
+            @Override
+            public void OnSuccess(String result) {
+                callback.ReSuccess(result);
+            }
+
+            @Override
+            public void OnFailure(String msg) {
+                callback.ReFailure(msg);
+            }
+        });
     }
 
 

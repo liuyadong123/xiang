@@ -35,35 +35,38 @@ public class ShouyeBean {
     }
 
     public static class ResultBean {
-        private List<RxxpBean> rxxp;
-        private List<PzshBean> pzsh;
-        private List<MlssBean> mlss;
 
-        public List<RxxpBean> getRxxp() {
+
+        private RxxpBean rxxp;
+        private PzshBean pzsh;
+        private MlssBean mlss;
+
+        public RxxpBean getRxxp() {
             return rxxp;
         }
 
-        public void setRxxp(List<RxxpBean> rxxp) {
+        public void setRxxp(RxxpBean rxxp) {
             this.rxxp = rxxp;
         }
 
-        public List<PzshBean> getPzsh() {
+        public PzshBean getPzsh() {
             return pzsh;
         }
 
-        public void setPzsh(List<PzshBean> pzsh) {
+        public void setPzsh(PzshBean pzsh) {
             this.pzsh = pzsh;
         }
 
-        public List<MlssBean> getMlss() {
+        public MlssBean getMlss() {
             return mlss;
         }
 
-        public void setMlss(List<MlssBean> mlss) {
+        public void setMlss(MlssBean mlss) {
             this.mlss = mlss;
         }
 
         public static class RxxpBean {
+
 
             private int id;
             private String name;
@@ -94,7 +97,13 @@ public class ShouyeBean {
             }
 
             public static class CommodityListBean {
-
+                /**
+                 * commodityId : 25
+                 * commodityName : 秋冬季真皮兔毛女鞋韩版休闲平底毛毛鞋软底百搭浅口水钻加绒棉鞋毛毛鞋潮鞋
+                 * masterPic : http://172.17.8.100/images/small/commodity/nx/ddx/1/1.jpg
+                 * price : 158
+                 * saleNum : 0
+                 */
 
                 private int commodityId;
                 private String commodityName;
@@ -145,6 +154,11 @@ public class ShouyeBean {
         }
 
         public static class PzshBean {
+            /**
+             * commodityList : [{"commodityId":6,"commodityName":"轻柔系自然裸妆假睫毛","masterPic":"http://172.17.8.100/images/small/commodity/mzhf/cz/4/1.jpg","price":39,"saleNum":0},{"commodityId":13,"commodityName":"贝览得美妆蛋","masterPic":"http://172.17.8.100/images/small/commodity/mzhf/mzgj/3/1.jpg","price":44,"saleNum":0},{"commodityId":11,"commodityName":"盒装葫芦粉扑美妆蛋化妆海绵","masterPic":"http://172.17.8.100/images/small/commodity/mzhf/mzgj/1/1.jpg","price":9,"saleNum":0},{"commodityId":5,"commodityName":"双头两用修容笔","masterPic":"http://172.17.8.100/images/small/commodity/mzhf/cz/3/1.jpg","price":39,"saleNum":156}]
+             * id : 1004
+             * name : 品质生活
+             */
 
             private int id;
             private String name;
@@ -175,6 +189,13 @@ public class ShouyeBean {
             }
 
             public static class CommodityListBeanX {
+                /**
+                 * commodityId : 6
+                 * commodityName : 轻柔系自然裸妆假睫毛
+                 * masterPic : http://172.17.8.100/images/small/commodity/mzhf/cz/4/1.jpg
+                 * price : 39
+                 * saleNum : 0
+                 */
 
                 private int commodityId;
                 private String commodityName;
@@ -226,7 +247,7 @@ public class ShouyeBean {
 
         public static class MlssBean {
             /**
-             * commodityList : [{"commodityId":32,"commodityName":"唐狮女鞋冬季女鞋休闲鞋子女士女鞋百搭帆布鞋女士休闲鞋子女款板鞋休闲女鞋帆布鞋","masterPic":"http://172.17.8.100/images/small/commodity/nx/fbx/1/1.jpg","price":88,"saleNum":0},{"commodityId":18,"commodityName":"白色经典 秋季新款简约百搭轻便休闲女鞋板鞋小白鞋","masterPic":"http://172.17.8.100/images/small/commodity/nx/bx/1/1.jpg","price":79,"saleNum":0}]
+             * commodityList : [{"commodityId":32,"commodityName":"唐狮女鞋冬季女鞋休闲鞋子女士女鞋百搭帆布鞋女士休闲鞋子女款板鞋休闲女鞋帆布鞋","masterPic":"http://172.17.8.100/images/small/commodity/nx/fbx/1/1.jpg","price":88,"saleNum":0},{"commodityId":16,"commodityName":"Lara style清洗剂","masterPic":"http://172.17.8.100/images/small/commodity/mzhf/mzgj/6/1.jpg","price":12,"saleNum":0}]
              * id : 1003
              * name : 魔力时尚
              */
